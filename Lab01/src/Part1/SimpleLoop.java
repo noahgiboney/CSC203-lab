@@ -10,6 +10,12 @@ public class SimpleLoop {
    * @return An integer that is the sum of numbers between low and high
    */
   public static int sum(int low, int high) {
-    return 0; // Clearly not correct
+
+    int counter = 0;
+    while (low < high){
+      counter++;
+      low++;
+    }
+    return counter; // Clearly not correct
   }
 }
