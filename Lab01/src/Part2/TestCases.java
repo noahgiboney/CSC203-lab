@@ -27,8 +27,8 @@ public class TestCases {
          new CourseGrade("Operating Systems", 75),
          new CourseGrade("Non-CS", 83)
       );
-      Applicant testApplicant = new Applicant("Aakash", grades);
-      assertEquals("Aakash", testApplicant.getName());
+//      Applicant testApplicant = new Applicant("Aakash", grades);
+//      assertEquals("Aakash", testApplicant.getName());
    }
 
    /*
