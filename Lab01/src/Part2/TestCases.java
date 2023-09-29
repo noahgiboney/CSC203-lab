@@ -1,7 +1,7 @@
 package Part2;
 
 import org.junit.jupiter.api.Test;
-import part1.CourseGrade;
+import Part1.CourseGrade;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
