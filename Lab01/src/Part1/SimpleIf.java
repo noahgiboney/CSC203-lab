@@ -16,7 +16,7 @@ public class SimpleIf {
      * return true if so, false otherwise
      */
 
-    return false; // A bit pessimistic!
+    return avg > threshold;
   }
 
   /**
@@ -32,7 +32,11 @@ public class SimpleIf {
      * TO DO: Write an if statement to determine which average is larger and return
      * that value.
      */
-
-    return 0; // Clearly not correct, but testable.
+    if (avg1 > avg2){
+      return  avg1;
+    }
+    else {
+      return avg2;
+    }
   }
 }

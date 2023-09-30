@@ -26,19 +26,18 @@ public class SimpleList {
     /*
      * TO DO: The output list, highScores, should hold as its elements the
      * appropriate boolean (true or false) value.
-     * 
+     *
      * Write a loop to compute the acceptability of the scores based on the
      * threshold and place the result into the output list.
-     * 
+     *
      * Use a FOR-EACH loop.
      */
-
-    for (int i : scores){
-      if (i >= threshold){
-        highScores.set(i, true);
+    for (Integer i : scores){
+      if (i > threshold){
+        highScores.add(true);
       }
       else {
-        highScores.set(i, false);
+        highScores.add(false);
       }
     }
     return highScores;

@@ -12,10 +12,10 @@ public class SimpleLoop {
   public static int sum(int low, int high) {
 
     int counter = 0;
-    while (low < high){
+    while (low <= high){
       counter++;
       low++;
     }
-    return counter; // Clearly not correct
+    return counter;
   }
 }

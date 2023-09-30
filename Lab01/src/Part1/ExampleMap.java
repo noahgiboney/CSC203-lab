@@ -1,5 +1,6 @@
 package Part1;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -16,15 +17,24 @@ public class ExampleMap {
    */
   public static List<String> highScoringStudents(Map<String, List<CourseGrade>> scoresByApplicantName, int scoreThreshold) {
     List<String> highScoringStudents = new LinkedList<>();
-
     /*
      * Build a list of the names of applicants who have scores strictly greater than
      * the given threshold.
      */
-    for (Map.Entry<String, List<CourseGrade>> current : scoresByApplicantName.entrySet()) {
-      List<CourseGrade> scores = current.getValue();
-    }
 
+    for (Map.Entry<String, List<CourseGrade>> current : scoresByApplicantName.entrySet()){
+      List<CourseGrade> scores = current.getValue();
+      boolean allGrades = true;
+
+      for (CourseGrade grades : scores){
+        if ((grades.getScore() < scoreThreshold)) {
+          allGrades = false;
+        }
+      }
+      if (allGrades){
+        highScoringStudents.add(current.getKey());
+      }
+    }
     return highScoringStudents;
   }
 }

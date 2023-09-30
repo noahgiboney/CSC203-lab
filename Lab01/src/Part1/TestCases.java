@@ -25,8 +25,8 @@ public class TestCases {
 
    @Test
    public void testAnalyzeApplicant3()    {
-      fail("Missing testAnalyzeApplicant3");
       /* TO DO: Write one more valid test case. */
+      assertTrue(SimpleIf.analyzeApplicant(100,90));
    }
 
    @Test
@@ -41,8 +41,8 @@ public class TestCases {
 
    @Test
    public void testMaxAverage3() {
-      fail("Missing testMaxAverage3");
       /* TO DO: Write one more valid test case. */
+      assertEquals(SimpleIf.maxAverage(70, 89),89);
    }
 
    ////////////////////////////////////////////////////////////
@@ -51,7 +51,7 @@ public class TestCases {
 
    @Test
    public void testSimpleLoop1()    {
-      assertEquals(7, SimpleLoop.sum(3, 4));
+      assertEquals(7, SimpleLoop.sum(3, 9));
    }
 
    @Test
@@ -61,9 +61,9 @@ public class TestCases {
 
    @Test
    public void testSimpleLoop3()    {
-      fail("Missing SimpleLoop3");
       /* TO DO: Write one more valid test case to make sure that
          this function is not just returning 7. */
+      assertEquals(8, SimpleLoop.sum(93,100));
    }
 
    ////////////////////////////////////////////////////////////
@@ -89,8 +89,10 @@ public class TestCases {
 
    @Test
    public void testSimpleArray3()   {
-      fail("Missing SimpleArray3");
       /* TO DO: Add a new test case. */
+      assertArrayEquals(
+              new boolean[] {false, false, false, true},
+              SimpleArray.applicantAcceptable(new int[] {1, 0 , 1, 83}, 2));
    }
 
    ////////////////////////////////////////////////////////////
@@ -99,18 +101,19 @@ public class TestCases {
 
    @Test
    public void testSimpleList1()   {
-      List<Integer> input =
-         new LinkedList<Integer>(Arrays.asList(new Integer[] {80, 85, 89, 92, 76, 81}));
-      List<Boolean> expected =
-         new ArrayList<Boolean>(Arrays.asList(new Boolean[] {false, false, true, true, false, false}));
+      List<Integer> input = new LinkedList<Integer>(Arrays.asList(new Integer[] {80, 85, 89, 92, 76, 81}));
+      List<Boolean> expected = new ArrayList<Boolean>(Arrays.asList(new Boolean[] {false, false, true, true, false, false}));
 
       assertEquals(expected, SimpleList.applicantAcceptable(input, 85));
    }
 
    @Test
    public void testSimpleList2()   {
-      fail("Missing SimpleList2");
       /* TO DO: Add a new test case. */
+      List<Integer> input = new LinkedList<>(Arrays.asList(new Integer[] {1,3,4,5,6,7,6}));
+      List<Boolean> expected = new LinkedList<>(Arrays.asList(new Boolean[] {false, false, false, true, true, true, true}));
+
+      assertEquals(expected, SimpleList.applicantAcceptable(input, 4));
    }
 
    ////////////////////////////////////////////////////////////
@@ -129,8 +132,8 @@ public class TestCases {
 
    @Test
    public void testFourOver85_3()   {
-      fail("Missing BetterLoop3");
       /* TO DO: Write a valid test case where the expected result is false. */
+    assertFalse(BetterLoop.atLeastFourOver85(new int[] {11,45,77,4,86,86,96}));
    }
 
    ////////////////////////////////////////////////////////////
@@ -161,7 +164,6 @@ public class TestCases {
             new CourseGrade("CPE 473", 90),
             new CourseGrade("CPE 476", 99),
             new CourseGrade("CPE 572", 100)));
-
       List<String> expected = Arrays.asList("Mary", "Sara");
 
       /*
@@ -175,7 +177,33 @@ public class TestCases {
 
    @Test
    public void testExampleMap2()    {
-      fail("Missing ExampleMap2");
       /* TO DO: Write another valid test case. */
+      Map<String, List<CourseGrade>> courseListsByStudent = new HashMap<>();
+      courseListsByStudent.put("Mary",
+              Arrays.asList(
+                      new CourseGrade("CPE 123", 11),
+                      new CourseGrade("CPE 101", 55),
+                      new CourseGrade("CPE 202", 99),
+                      new CourseGrade("CPE 203", 1),
+                      new CourseGrade("CPE 225", 77)));
+      courseListsByStudent.put("Sam",
+              Arrays.asList(
+                      new CourseGrade("CPE 101", 66),
+                      new CourseGrade("CPE 202", 12),
+                      new CourseGrade("CPE 203", 66),
+                      new CourseGrade("CPE 225", 80)));
+      courseListsByStudent.put("Sara",
+              Arrays.asList(
+                      new CourseGrade("CPE 123", 0),
+                      new CourseGrade("CPE 203", 55),
+                      new CourseGrade("CPE 471", 82),
+                      new CourseGrade("CPE 473", 5),
+                      new CourseGrade("CPE 476", 11),
+                      new CourseGrade("CPE 572", 100)));
+      List<String> expected = Arrays.asList("Sam");
+
+      assertEquals(new HashSet<>(expected),
+              new HashSet<>(ExampleMap.highScoringStudents(
+                      courseListsByStudent, 10)));
    }
 }
