@@ -1,5 +1,7 @@
 package Part1;
 
+import Part2.Applicant;
+
 public class SimpleIf {
 
   /**
@@ -38,5 +40,9 @@ public class SimpleIf {
     else {
       return avg2;
     }
+  }
+
+  public static boolean analyzeApplicant2(Applicant applicant, int threshold){
+    return applicant.getYearsOfExperience() >= threshold;
   }
 }
