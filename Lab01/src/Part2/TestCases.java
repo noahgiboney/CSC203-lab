@@ -100,7 +100,7 @@ public class TestCases {
       Applicant noah = new Applicant("Noah Giboney", noahsGrades, 2);
 
 
-      assertFalse(SimpleIf.analyzeApplicant2(noah, 18));
+      assertFalse(SimpleIf.analyzeApplicant2(noah, 5));
    }
 
    @Test
