@@ -40,6 +40,6 @@ public class BetterLoop {
     for(int i = 0; i < scores.length - 1; i++){
       sum += scores[i];
     }
-    return sum / scores.length - 1;
+    return sum / (scores.length - 1);
   }
 }

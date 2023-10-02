@@ -3,6 +3,7 @@ package Part1;
 import java.util.*;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestTemplate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -206,4 +207,17 @@ public class TestCases {
               new HashSet<>(ExampleMap.highScoringStudents(
                       courseListsByStudent, 10)));
    }
+   @Test
+   public void testAverage1(){
+      int[] noahScores = {22,66,88,11,33};
+      assertEquals(46.75,BetterLoop.average(noahScores));
+   }
+
+   @Test
+   public void testAverage2(){
+      int[] noahScores = {77,99,100,55,33};
+      assertEquals(82.75,BetterLoop.average(noahScores));
+   }
 }
+
+

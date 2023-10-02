@@ -42,6 +42,13 @@ public class SimpleIf {
     }
   }
 
+  /*The explanation for this filter method for my applicant class is to filter if the applicant has
+  * a certain years of experience. The Applicant instance is passed in as a parameter to the function
+  * along with the threshold for years of experience the company wants to set. The function returns a boolean
+  * value (true/false) if the applicant has greater than or equal to the threshold. The applicant years of
+  * experience is accessed through the get years of experience getter method since the years of experience
+  *  per applicant is a private attribute.*/
+
   public static boolean analyzeApplicant2(Applicant applicant, int threshold){
     return applicant.getYearsOfExperience() >= threshold;
   }

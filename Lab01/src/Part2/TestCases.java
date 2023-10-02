@@ -114,4 +114,28 @@ public class TestCases {
 
       assertTrue(SimpleIf.analyzeApplicant2(noah, 9));
    }
+
+   @Test
+   public void testApplicant3(){
+      ArrayList<CourseGrade> noahsGrades = new ArrayList<>();
+      noahsGrades.add(0,new CourseGrade("Intro to CS", 77));
+      noahsGrades.add(1,new CourseGrade("Algorithms", 80));
+      noahsGrades.add(2,new CourseGrade("Operating Systems", 11));
+
+      Applicant noah = new Applicant("Noah Giboney", noahsGrades, 88);
+
+      assertTrue(SimpleIf.analyzeApplicant2(noah, 80));
+   }
+
+   @Test
+   public void testApplicant4(){
+      ArrayList<CourseGrade> noahsGrades = new ArrayList<>();
+      noahsGrades.add(0,new CourseGrade("Intro to CS", 77));
+      noahsGrades.add(1,new CourseGrade("Algorithms", 80));
+      noahsGrades.add(2,new CourseGrade("Operating Systems", 11));
+
+      Applicant noah = new Applicant("Noah Giboney", noahsGrades, 1);
+
+      assertFalse(SimpleIf.analyzeApplicant2(noah, 9));
+   }
 }
