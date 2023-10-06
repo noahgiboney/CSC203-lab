@@ -10,6 +10,7 @@ import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.HashMap;
 import java.util.stream.Collectors;
 
 /**
@@ -20,7 +21,7 @@ public class PartOneTestCases {
     /**
      * Tests the implementation of the Emission class.
      *
-     * TO-DO: Examine this test case to know what you should name your public methods. *f
+     * TO-DO: Examine this test case to know what you should name your public methods.
      *
      * @throws NoSuchMethodException
      */
@@ -96,4 +97,33 @@ public class PartOneTestCases {
         }
     }
 
+    @Test
+    public void testYearWithHighestEmissionsSector(){
+
+        Map<Integer, Double> emissions = new HashMap<>();
+        emissions.put(222, 1113.0);
+        emissions.put(111, 3213.0);
+        emissions.put(400, 200_441.0);
+        emissions.put(1994, 3321.0);
+        emissions.put(2, 22_737.0);
+
+        Sector mySector = new Sector("sector", emissions);
+
+        assertEquals(400, Util.getYearWithHighestEmissions(mySector));
+    }
+
+    @Test
+    public void testYearWithHighestEmissionsCountry(){
+
+        Map<Integer, Emission> emissions = new HashMap<>();
+        emissions.put(500, new Emission(9000.0,2972.0,771.0));
+        emissions.put(2, new Emission(445.0,2312.0,111.0));
+        emissions.put(1, new Emission(22.0,222.0,5.0));
+        emissions.put(333,new Emission(77_000.0,2312.0,111.0));
+        emissions.put(666, new Emission(55.0,222.0,12311.0));
+
+        Country myCountry = new Country("country", emissions);
+
+        assertEquals(333, Util.getYearWithHighestEmissions(myCountry));
+    }
 }

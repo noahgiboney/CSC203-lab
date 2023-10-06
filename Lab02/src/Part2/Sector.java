@@ -1,6 +1,5 @@
-package Part1;
+package Part2;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class Sector {
@@ -10,6 +9,18 @@ public class Sector {
     public Sector(String name, Map<Integer, Double> emissions){
         this.name = name;
         this.emissions = emissions;
+    }
+
+    public int getYearWithHighestEmissions() {
+        int maxYear = 0;
+        double maxEmissions = 0;
+        for (Integer key : this.emissions.keySet()) {
+            if (this.emissions.get(key) > maxEmissions) {
+                maxEmissions = this.emissions.get(key);
+                maxYear = key;
+            }
+        }
+        return maxYear;
     }
 
     private void setName(String name) {
