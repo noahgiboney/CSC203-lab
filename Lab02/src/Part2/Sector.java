@@ -1,5 +1,6 @@
 package Part2;
 
+import java.util.List;
 import java.util.Map;
 
 public class Sector {
@@ -38,4 +39,23 @@ public class Sector {
     public Map<Integer, Double> getEmissions() {
         return emissions;
     }
+
+    public static Sector sectorWithBiggestChangeInEmissions(List<Sector> sectors, int startYear, int endYear){
+        Sector maxSector = null;
+        double maxChange = 0;
+        double startEmissions = 0;
+        double endEmissions = 0;
+        double changeInEmissions = 0;
+        for (Sector sectorIndex : sectors){
+            startEmissions = sectorIndex.getEmissions().get(startYear);
+            endEmissions = sectorIndex.getEmissions().get(endYear);
+            changeInEmissions = Math.abs(startEmissions - endEmissions);
+            if (changeInEmissions > maxChange){
+                maxChange = changeInEmissions;
+                maxSector = sectorIndex;
+            }
+        }
+        return maxSector;
+    }
+
 }
