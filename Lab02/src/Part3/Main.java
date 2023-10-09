@@ -17,10 +17,26 @@ public class Main {
         List<Country> countries = getCountries();
         List<Sector> sectors = getSectors();
 
+        //5950000
+        //8346000
+        //9737 or 6704
+
+        String nameHighestCH4 = Country.countryWithHighestCH4InYear(countries, 2000).getName();
+        double highestCh4 = Country.countryWithHighestCH4InYear(countries,2000).getEmissions().get(2000).getCH4();
+
+        String nameHighestIncrease = Country.countryWithHighestChangeInEmissions(countries, 1988, 2012).getName();
+        double highestIncrease = Country.countryWithHighestChangeInEmissions(countries, 1988, 2012).getTotalEmissions(2012) -
+                                Country.countryWithHighestChangeInEmissions(countries, 1988, 2012).getTotalEmissions(1988);
+
+        String sectorNameIncrease = Sector.sectorWithBiggestChangeInEmissions(sectors,1988,2012).getName();
+        double sectorIncrease = Sector.sectorWithBiggestChangeInEmissions(sectors,1988,2012).getEmissions().get(2012) -
+                                Sector.sectorWithBiggestChangeInEmissions(sectors,1988,2012).getEmissions().get(1988);
+
+
         System.out.println();
-        System.out.println("Country with highest methane gas emission in 2000: " + Country.countryWithHighestCH4InYear(countries, 2000).getName());
-        System.out.println("Country with highest increase in greenhouse gas emissions between 1988 and 2012: " + Country.countryWithHighestChangeInEmissions(countries, 1988, 2012).getName());
-        System.out.println("Sector with the highest change in greenhouse gas emissions between 1988 and 2012: " + Sector.sectorWithBiggestChangeInEmissions(sectors,1988,2012).getName());
+        System.out.println("Country with highest methane gas emission in 2000: " + nameHighestCH4 + " with " + highestCh4 );
+        System.out.println("Country with highest increase in greenhouse gas emissions between 1988 and 2012: " + nameHighestIncrease  + " with " + highestIncrease);
+        System.out.println("Sector with the highest change in greenhouse gas emissions between 1988 and 2012: " + sectorNameIncrease  + " with " +sectorIncrease);
     }
 
 	/**
@@ -99,7 +115,6 @@ public class Main {
             Sector sector = new Sector(entry.getKey(), entry.getValue());
             result.add(sector);
         }
-
         return result;
     }
 }

@@ -73,7 +73,7 @@ public class Country {
         return maxCountry;
     }
 
-    private double getTotalEmissions( int year){
+    public double getTotalEmissions(int year){
         return this.getEmissions().get(year).getCO2() + this.getEmissions().get(year).getN2O() + this.getEmissions().get(year).getCH4();
     }
 }
