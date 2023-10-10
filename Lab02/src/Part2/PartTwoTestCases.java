@@ -4,10 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -95,19 +92,6 @@ public class PartTwoTestCases {
     }
 
     @Test
-    public void testYearWithHighestEmissionsSector(){
-        Map<Integer, Double> emissions = new HashMap<>();
-        emissions.put(3211, 113.0);
-        emissions.put(122, 3213.0);
-        emissions.put(4324, 20_441.0);
-        emissions.put(1994, 3321.0);
-        emissions.put(2023, 222_737.0);
-
-        Sector mySector = new Sector("sector", emissions);
-        assertEquals(2023, mySector.getYearWithHighestEmissions());
-    }
-
-    @Test
     public void testYearWithHighestEmissionsCountry() {
         Map<Integer, Emission> emissions = new HashMap<>();
         emissions.put(500, new Emission(940.0,241.0,4321.0));
@@ -121,7 +105,77 @@ public class PartTwoTestCases {
         assertEquals(666,myCountry.getYearWithHighestEmissions());
     }
 
+    @Test
+    public void testCountryWithHighestCH4InYear(){
+
+        Map<Integer, Emission> chinaE = new HashMap<>();
+        chinaE.put(2000, new Emission(932140.0,221341.0,43213213231.0));
+
+        Map<Integer, Emission> usaE = new HashMap<>();
+        usaE.put(2000, new Emission(940321.0,241.0,4399991.0));
+
+        Map<Integer, Emission> peruE = new HashMap<>();
+        peruE.put(2000, new Emission(943210.0,241.0,444));
 
 
+        List<Country> countries = new ArrayList<>();
+        countries.add(new Country("china", chinaE));
+        countries.add(new Country("usa", usaE));
+        countries.add(new Country("peru", peruE));
 
+        assertEquals("chisna", Country.countryWithHighestCH4InYear(countries,2000).getName());
+    }
+
+    @Test
+    public void testCountryWithHighestChangeInEmissions(){
+        Map<Integer, Emission> chinaE = new HashMap<>();
+        chinaE.put(1900, new Emission(0,221341.0,43231.0));
+        chinaE.put(2000, new Emission(932140.0,221341.0,321));
+
+        Map<Integer, Emission> usaE = new HashMap<>();
+        usaE.put(1900, new Emission(0,0,0));
+        usaE.put(2000, new Emission(940321.0,241.0,43213213231.0));
+
+        Map<Integer, Emission> peruE = new HashMap<>();
+        peruE.put(1900, new Emission(324,3223,432));
+        peruE.put(2000, new Emission(9433210.0,241.0,444));
+
+
+        List<Country> countries = new ArrayList<>();
+        countries.add(new Country("china", chinaE));
+        countries.add(new Country("usa", usaE));
+        countries.add(new Country("peru", peruE));
+
+        assertEquals("usa", Country.countryWithHighestChangeInEmissions(countries,1900,2000).getName());
+    }
+
+    @Test
+    public void testYearWithHighestEmissionsSector(){
+        Map<Integer, Double> emissions = new HashMap<>();
+        emissions.put(3211, 113.0);
+        emissions.put(122, 3213.0);
+        emissions.put(2131, 14222421.0);
+        emissions.put(1994, 3321.0);
+        emissions.put(123, 222_737.0);
+
+        Sector mySector = new Sector("sector", emissions);
+        assertEquals(2131, mySector.getYearWithHighestEmissions());
+    }
+
+    @Test
+    public void testSectorWithBiggestChangeInEmissions(){
+        Map<Integer, Double> power = new HashMap<>();
+        power.put(1900, 10.0);
+        power.put(2001, 50.0);
+
+        Map<Integer, Double> oil = new HashMap<>();
+        oil.put(1900, 10.0);
+        oil.put(2001, 50000.0);
+
+        List<Sector> sectors = new ArrayList<>();
+        sectors.add(new Sector("power", power));
+        sectors.add(new Sector("oil", oil));
+
+        assertEquals("oil", Sector.sectorWithBiggestChangeInEmissions(sectors, 1900, 2001).getName());
+    }
 }

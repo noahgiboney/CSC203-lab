@@ -10,7 +10,8 @@ public class Country {
     public Country(String name, Map<Integer, Emission> emissions){
         this.name = name;
         this.emissions = emissions;
-    };
+    }
+
     public int getYearWithHighestEmissions(){
         int maxYear = 0;
         double maxEmissions = 0;
@@ -23,22 +24,6 @@ public class Country {
             }
         }
         return maxYear;
-    }
-
-    private void setName(String name) {
-        this.name = name;
-    }
-
-    private void setEmissions(Map<Integer, Emission> map) {
-        this.emissions = map;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Map<Integer, Emission> getEmissions() {
-        return emissions;
     }
 
     public static Country countryWithHighestCH4InYear(List<Country> countries, int year){
@@ -62,8 +47,8 @@ public class Country {
         double changeInEmissions = 0;
 
         for (Country countryIndex: countries){
-            startEmissions = countryIndex.getTotalEmissions(startYear);
-            endEmissions = countryIndex.getTotalEmissions(endYear);
+            startEmissions = countryIndex.getEmissions().get(startYear).getCO2() + countryIndex.getEmissions().get(startYear).getN2O() + countryIndex.getEmissions().get(startYear).getCH4();
+            endEmissions = countryIndex.getEmissions().get(endYear).getCO2() + countryIndex.getEmissions().get(endYear).getN2O() + countryIndex.getEmissions().get(endYear).getCH4();
             changeInEmissions = endEmissions - startEmissions;
             if (changeInEmissions > maxIncrease){
                 maxIncrease = changeInEmissions;
@@ -73,7 +58,12 @@ public class Country {
         return maxCountry;
     }
 
-    public double getTotalEmissions(int year){
-        return this.getEmissions().get(year).getCO2() + this.getEmissions().get(year).getN2O() + this.getEmissions().get(year).getCH4();
+    public String getName() {
+        return name;
     }
+
+    public Map<Integer, Emission> getEmissions() {
+        return emissions;
+    }
+
 }

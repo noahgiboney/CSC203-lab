@@ -24,22 +24,6 @@ public class Sector {
         return maxYear;
     }
 
-    private void setName(String name) {
-        this.name = name;
-    }
-
-    private void setEmissions(Map<Integer, Double> emissions) {
-        this.emissions = emissions;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Map<Integer, Double> getEmissions() {
-        return emissions;
-    }
-
     public static Sector sectorWithBiggestChangeInEmissions(List<Sector> sectors, int startYear, int endYear){
         Sector maxSector = null;
         double maxChange = 0;
@@ -56,6 +40,22 @@ public class Sector {
             }
         }
         return maxSector;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEmissions(Map<Integer, Double> emissions) {
+        this.emissions = emissions;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Map<Integer, Double> getEmissions() {
+        return emissions;
     }
 
 }
