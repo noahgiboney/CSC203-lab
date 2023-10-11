@@ -34,7 +34,6 @@ public class Country {
                 maxCountry = countryIndex;
                 maxCH4 = countryIndex.getEmissions().get(year).getCH4();
             }
-
         }
         return maxCountry;
     }
@@ -42,15 +41,12 @@ public class Country {
     public static Country countryWithHighestChangeInEmissions(List<Country> countries, int startYear, int endYear){
         Country maxCountry = null;
         double maxIncrease = 0;
-        double startEmissions = 0;
-        double endEmissions = 0;
-        double changeInEmissions = 0;
 
         for (Country countryIndex: countries){
-            startEmissions = countryIndex.getEmissions().get(startYear).getCO2() + countryIndex.getEmissions().get(startYear).getN2O() + countryIndex.getEmissions().get(startYear).getCH4();
-            endEmissions = countryIndex.getEmissions().get(endYear).getCO2() + countryIndex.getEmissions().get(endYear).getN2O() + countryIndex.getEmissions().get(endYear).getCH4();
-            changeInEmissions = endEmissions - startEmissions;
-            if (changeInEmissions > maxIncrease){
+            double startEmissions = countryIndex.getEmissions().get(startYear).getCO2() + countryIndex.getEmissions().get(startYear).getN2O() + countryIndex.getEmissions().get(startYear).getCH4();
+            double endEmissions = countryIndex.getEmissions().get(endYear).getCO2() + countryIndex.getEmissions().get(endYear).getN2O() + countryIndex.getEmissions().get(endYear).getCH4();
+            double changeInEmissions = endEmissions - startEmissions;
+            if (changeInEmissions >= maxIncrease){
                 maxIncrease = changeInEmissions;
                 maxCountry = countryIndex;
             }

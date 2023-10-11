@@ -7,7 +7,7 @@ public class Emission {
 
     public Emission(double co2, double n20, double ch4){
         this.co2 = co2;
-        this.n2o = n2o;
+        this.n2o = n20;
         this.ch4 = ch4;
     }
 
