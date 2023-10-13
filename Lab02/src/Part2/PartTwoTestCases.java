@@ -115,7 +115,7 @@ public class PartTwoTestCases {
         usaE.put(2000, new Emission(940321.0,241.0,4399991.0));
 
         Map<Integer, Emission> peruE = new HashMap<>();
-        peruE.put(2000, new Emission(943210.0,241.0,444));
+        peruE.put(2000, new Emission(943210.0,241.0,432132132361.0));
 
 
         List<Country> countries = new ArrayList<>();
@@ -123,7 +123,7 @@ public class PartTwoTestCases {
         countries.add(new Country("usa", usaE));
         countries.add(new Country("peru", peruE));
 
-        assertEquals("chisna", Country.countryWithHighestCH4InYear(countries,2000).getName());
+        assertEquals("peru", Country.countryWithHighestCH4InYear(countries,2000).getName());
     }
 
     @Test

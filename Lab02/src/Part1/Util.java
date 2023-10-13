@@ -1,8 +1,5 @@
 package Part1;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Util {
     public static int getYearWithHighestEmissions(Country country){
         int maxYear = 0;

@@ -5,7 +5,7 @@ public class Emission {
     private double n2o;
     private double ch4;
 
-    public Emission(double co2, double n20, double ch4){
+    public Emission(double co2, double n2o, double ch4){
         this.co2 = co2;
         this.n2o = n2o;
         this.ch4 = ch4;
@@ -15,7 +15,7 @@ public class Emission {
         this.co2 = co2;
     }
 
-    private void setN2O(double n2o) {
+    private void setN2o(double n2o) {
         this.n2o = n2o;
     }
 
