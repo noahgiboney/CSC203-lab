@@ -1,7 +1,7 @@
 import java.util.List;
 import java.util.Map;
 
-public class Sector {
+public class Sector implements GreenhouseGasEmitter {
     private String name;
     private Map<Integer, Double> emissions;
 
@@ -50,6 +50,11 @@ public class Sector {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public double getTotalEmissionsInYear(int year) {
+        return this.getEmissions().get(year);
     }
 
     public Map<Integer, Double> getEmissions() {

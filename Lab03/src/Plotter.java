@@ -53,16 +53,16 @@ public class Plotter extends PApplet {
         textSize(14);
         background(255);
 
-        this.plotSectorData(this.db.getSectors());
+        this.plotEmissionsData(this.db.getSectors(), this.db.getSectorMaxEmission(), this.db.getSectorMinEmission());
     }
 
     // Plots sector emission data.
     // TODO: Make changes here (and appropriate changes elsewhere) to support plotting
     //  either Country or Sector emissions using Object-oriented design principles.
-    private void plotSectorData(List<Sector> sectors) {
+    private void plotEmissionsData(List<Sector> sectors, double max, double min) {
         writePlotTitle("Greenhouse gas emissions");
         writeYearsAxis();
-        writeEmissionsAxis(this.db.getSectorMinEmission(), this.db.getSectorMaxEmission());
+        writeEmissionsAxis(min, max);
 
         int toolTipX = -1;
         int toolTipY = -1;
@@ -76,13 +76,13 @@ public class Plotter extends PApplet {
 
             // Plot the greenhouse gas emissions from each year from 1970 to 2012
             for (int year = 1970; year <= 2012; year++) {
-                double emission = sector.getEmissionsInYear(year);
+                double emission = sector.getTotalEmissionsInYear(year);
                 stroke(rgb[0], rgb[1], rgb[2]);
                 fill(rgb[0], rgb[1], rgb[2]);
 
                 // Draw the point at the specified x and y axis
                 int x = mapYear(year);
-                int y = mapEmissions(emission, this.db.getSectorMinEmission(), this.db.getSectorMaxEmission());
+                int y = mapEmissions(emission, min, max);
                 circle(x, y, MARK_SIZE);
 
                 // Determine if the mouse is hovering within a drawn point

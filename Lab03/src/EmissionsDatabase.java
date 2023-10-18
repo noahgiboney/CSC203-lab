@@ -77,7 +77,7 @@ public class EmissionsDatabase {
 
     // Loads the countries from the countries.csv file, and computes the country min and max while doing so.
     private void loadCountries() {
-        File dataFile = new File("countries.csv");
+        File dataFile = new File("/Users/noahgiboney/IdeaProjects/csc203-lab/Lab03/src/countries.csv");
         Map<String, Map<Integer, Emission>> emissions = new HashMap<>();
 
         this.countryMaxEmission = Double.MIN_VALUE;
@@ -130,7 +130,7 @@ public class EmissionsDatabase {
         this.sectorMaxEmission = Double.MIN_VALUE;
         this.sectorMinEmission = Double.MAX_VALUE;
 
-        File dataFile = new File("sectors.csv");
+        File dataFile = new File("/Users/noahgiboney/IdeaProjects/csc203-lab/Lab03/src/sectors.csv");
         Map<String, Map<Integer, Double>> tempMap = new HashMap<>();
         try {
             Scanner scan = new Scanner(dataFile);
