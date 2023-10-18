@@ -11,11 +11,11 @@ import java.util.*;
  */
 public class EmissionsDatabase {
 
-    private List<Sector> sectors;
+    private List<GreenhouseGasEmitter> sectors;
     private double sectorMinEmission = -1;
     private double sectorMaxEmission = -1;
 
-    private List<Country> countries;
+    private List<GreenhouseGasEmitter> countries;
     private double countryMinEmission = -1;
     private double countryMaxEmission = -1;
 
@@ -57,7 +57,7 @@ public class EmissionsDatabase {
      *
      * @return A list of Country objects
      */
-    public List<Country> getCountries() {
+    public List<GreenhouseGasEmitter> getCountries() {
         if (this.countries == null) {
             this.loadCountries();
         }
@@ -68,7 +68,7 @@ public class EmissionsDatabase {
      * Obtains the list of Sectors, reading it from the file first if it hasn't been read yet.
      * @return A list of Sector objects
      */
-    public List<Sector> getSectors() {
+    public List<GreenhouseGasEmitter> getSectors() {
         if (this.sectors == null) {
             this.loadSectors();
         }

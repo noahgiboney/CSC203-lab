@@ -53,13 +53,13 @@ public class Plotter extends PApplet {
         textSize(14);
         background(255);
 
-        this.plotEmissionsData(this.db.getSectors(), this.db.getSectorMaxEmission(), this.db.getSectorMinEmission());
+        this.plotEmissionsData(this.db.getCountries(), this.db.getCountryMaxEmission(), this.db.getCountryMinEmission());
     }
 
     // Plots sector emission data.
     // TODO: Make changes here (and appropriate changes elsewhere) to support plotting
     //  either Country or Sector emissions using Object-oriented design principles.
-    private void plotEmissionsData(List<Sector> sectors, double max, double min) {
+    private void plotEmissionsData(List<GreenhouseGasEmitter> emitters, double max, double min) {
         writePlotTitle("Greenhouse gas emissions");
         writeYearsAxis();
         writeEmissionsAxis(min, max);
@@ -69,14 +69,14 @@ public class Plotter extends PApplet {
         String toolTipName = null;
 
         int colourIndex = 0;
-        for (Sector sector : sectors) {
+        for (GreenhouseGasEmitter emitter : emitters) {
             // First, choose a colour for the points being plotted, and update the colourIndex
             int[] rgb = this.colourPalette[colourIndex % this.colourPalette.length];
             colourIndex = colourIndex + 1;
 
             // Plot the greenhouse gas emissions from each year from 1970 to 2012
             for (int year = 1970; year <= 2012; year++) {
-                double emission = sector.getTotalEmissionsInYear(year);
+                double emission = emitter.getTotalEmissionsInYear(year);
                 stroke(rgb[0], rgb[1], rgb[2]);
                 fill(rgb[0], rgb[1], rgb[2]);
 
@@ -90,7 +90,7 @@ public class Plotter extends PApplet {
                         this.mouseY > y - MARK_SIZE && this.mouseY < y + MARK_SIZE) {
                     toolTipX = x;
                     toolTipY = y;
-                    toolTipName = sector.getName();
+                    toolTipName = emitter.getName();
                 }
             }
         }

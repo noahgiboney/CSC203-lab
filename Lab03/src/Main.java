@@ -5,6 +5,6 @@ public class Main extends PApplet {
     public static void main(String[] args) {
         String[] processingArgs = {"main"};
         Plotter plotter = new Plotter();
-        PApplet.runSketch(processingArgs, plotter);//
+        PApplet.runSketch(processingArgs, plotter);
     }
 }
