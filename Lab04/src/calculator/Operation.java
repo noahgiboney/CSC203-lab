@@ -1,6 +1,5 @@
 package calculator;
 
-interface Operation
-{
+interface Operation {
    double evaluate(Bindings bindings);
 }

@@ -1,6 +1,5 @@
 package calculator;
 
-public interface Expression
-   extends Operation
+public interface Expression extends Operation
 {
 }
