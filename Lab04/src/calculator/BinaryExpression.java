@@ -1,6 +1,6 @@
 package calculator;
 
-public class BinaryExpression implements Expression {
+public abstract class BinaryExpression implements Expression {
 
     private final Expression lft;
     private final Expression rht;
@@ -18,10 +18,9 @@ public class BinaryExpression implements Expression {
         return "(" + lft + this.op + rht + ")";
     }
 
-    public double evaluate(final Bindings bindings)
-    {
-        return lft.evaluate(bindings) + rht.evaluate(bindings);
+    public double evaluate(final Bindings bindings) {
+        return _applyOperator(lft.evaluate(bindings), rht.evaluate(bindings));
     }
 
-    protected void _applyOperator(){};
+    protected abstract double _applyOperator(Double lft, Double rht);
 }
