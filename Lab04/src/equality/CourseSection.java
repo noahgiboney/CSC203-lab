@@ -1,5 +1,7 @@
 package equality;
 
+import jdk.jshell.spi.SPIResolutionException;
+
 import java.time.LocalTime;
 import java.util.Arrays;
 import java.util.Objects;
@@ -36,7 +38,14 @@ class CourseSection {
 
    @Override
    public int hashCode(){
-      return Objects.hash(prefix, number, enrollment, startTime, endTime);
+      int hashTotal = 0;
+      hashTotal += this.prefix.hashCode();
+      hashTotal += this.number.hashCode();
+      hashTotal += 31 * hashTotal + this.enrollment;
+      hashTotal += this.startTime.hashCode();
+      hashTotal += this.endTime.hashCode();
+
+      return hashTotal;
    }
 
    // additional likely methods not defined since they are not needed for testing
