@@ -44,7 +44,6 @@ class CourseSection {
       hashTotal += 31 * hashTotal + this.enrollment;
       hashTotal += this.startTime.hashCode();
       hashTotal += this.endTime.hashCode();
-
       return hashTotal;
    }
 
