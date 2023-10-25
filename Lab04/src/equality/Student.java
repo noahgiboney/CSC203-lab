@@ -28,7 +28,7 @@ class Student {
 
       Student check = (Student) obj;
       return Objects.equals(this.getSurname(), check.getSurname()) && Objects.equals(this.getGivenName(), check.getGivenName())
-              && this.getAge() == check.getAge() && this.currentCourses.equals(check.getCurrentCourses());
+              && this.getAge() == check.getAge() && Objects.equals(this.currentCourses, check.currentCourses);
    }
 
 

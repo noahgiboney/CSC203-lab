@@ -31,8 +31,7 @@ class CourseSection {
       CourseSection check = (CourseSection) obj;
       return this.getEnrollment() == check.getEnrollment() && Objects.equals(this.getNumber(), check.getNumber())
               && Objects.equals(this.getPrefix(), check.getPrefix()) && this.getEndTime() ==  check.getEndTime()
-              && this.getStartTime().getHour() == check.getStartTime().getHour() && this.getEndTime().getHour() == check.getEndTime().getHour()
-              && this.getStartTime().getMinute() == check.getStartTime().getMinute() && this.getEndTime().getMinute() == check.getEndTime().getMinute();
+              && Objects.equals(this.getEndTime(), check.getEndTime()) && Objects.equals(this.getStartTime(), check.getStartTime());
    }
 
    @Override
