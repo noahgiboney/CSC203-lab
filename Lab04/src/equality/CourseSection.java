@@ -32,18 +32,17 @@ class CourseSection {
       }
       CourseSection check = (CourseSection) obj;
       return this.getEnrollment() == check.getEnrollment() && Objects.equals(this.getNumber(), check.getNumber())
-              && Objects.equals(this.getPrefix(), check.getPrefix()) && this.getEndTime() ==  check.getEndTime()
-              && Objects.equals(this.getEndTime(), check.getEndTime()) && Objects.equals(this.getStartTime(), check.getStartTime());
+              && Objects.equals(this.getPrefix(), check.getPrefix()) && Objects.equals(this.getEndTime(), check.getEndTime()) && Objects.equals(this.getStartTime(), check.getStartTime());
    }
 
    @Override
    public int hashCode(){
       int hashTotal = 0;
-      hashTotal += this.prefix.hashCode();
-      hashTotal += this.number.hashCode();
+      hashTotal += 31 * hashTotal + this.prefix.hashCode();
+      hashTotal += 31 * hashTotal + this.number.hashCode();
       hashTotal += 31 * hashTotal + this.enrollment;
-      hashTotal += this.startTime.hashCode();
-      hashTotal += this.endTime.hashCode();
+      hashTotal += 31 * hashTotal + this.startTime.hashCode();
+      hashTotal += 31 * hashTotal + this.endTime.hashCode();
       return hashTotal;
    }
 
