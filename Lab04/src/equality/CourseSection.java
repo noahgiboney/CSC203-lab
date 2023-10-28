@@ -38,11 +38,22 @@ class CourseSection {
    @Override
    public int hashCode(){
       int hashTotal = 0;
-      hashTotal += 31 * hashTotal + this.prefix.hashCode();
-      hashTotal += 31 * hashTotal + this.number.hashCode();
+      if(this.prefix != null){
+         hashTotal += 31 * hashTotal + this.prefix.hashCode();
+      }
+      if(this.number != null){
+         hashTotal += 31 * hashTotal + this.number.hashCode();
+      }
+
       hashTotal += 31 * hashTotal + this.enrollment;
-      hashTotal += 31 * hashTotal + this.startTime.hashCode();
-      hashTotal += 31 * hashTotal + this.endTime.hashCode();
+
+      if(this.startTime != null){
+         hashTotal += 31 * hashTotal + this.startTime.hashCode();
+      }
+      if(this.endTime != null){
+         hashTotal += 31 * hashTotal + this.endTime.hashCode();
+      }
+
       return hashTotal;
    }
 
