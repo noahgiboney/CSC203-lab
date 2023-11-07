@@ -67,38 +67,38 @@ public class TestCases
    @Test
    public void testExercise2()
    {
-      final LongSupplier first = () -> 9;
-      final LongSupplier second = () -> 9;
+      final LongSupplier first =  getNumberGenerator();
+      final LongSupplier second = getNumberGenerator();
 
-      assertEquals(9, first.getAsLong());
-      assertEquals(9, first.getAsLong());
-      assertEquals(9, second.getAsLong());
-      assertEquals(9, first.getAsLong());
-      assertEquals(9, second.getAsLong());
-      assertEquals(9, first.getAsLong());
-      assertEquals(9, second.getAsLong());
+      //each time we call first or second number generator it increments the previous value by 1
+      assertEquals(0, first.getAsLong());
+      assertEquals(1, first.getAsLong());
+      assertEquals(0, second.getAsLong());
+      assertEquals(2, first.getAsLong());
+      assertEquals(1, second.getAsLong());
+      assertEquals(3, first.getAsLong());
+      assertEquals(2, second.getAsLong());
    }
 
    @Test
    public void testExercise3()
    {
       final LongFunction<LongUnaryOperator> curried = createAdder();
-      final LongUnaryOperator add7 = curried.apply();
+      final LongUnaryOperator add7 = curried.apply(7);
       final LongUnaryOperator add3 = curried.apply(3);
 
       assertEquals(9, add7.applyAsLong(2));
-      assertEquals(0, add3.applyAsLong(2));
-      assertEquals(0, add3.applyAsLong(10));
+      assertEquals(5, add3.applyAsLong(2));
+      assertEquals(13, add3.applyAsLong(10));
    }
 
    @Test
-   public void testExercise4()
-   {
+   public void testExercise4() {
       final List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
-      final List<Integer> expected = Arrays.asList();
-      final int n = 10;
+      final int n = 1;
+      final List<Integer> expected = Arrays.asList(2, 3, 4, 5, 6);
 
-      final List<Integer> result = mapIt(numbers, x -> x + n);
+      final List<Integer> result = mapIt(numbers, x -> x + n); //increment x by 1
 
       assertEquals(expected, result);
    }
@@ -112,9 +112,9 @@ public class TestCases
          "HeLLo",
          "helLo",
          "HELLO");
-      final List<String> expected = Arrays.asList();
+      final List<String> expected = Arrays.asList("hello", "hello", "hello", "hello", "hello");
 
-      final List<String> result = mapIt(strings, String::toLowerCase);
+      final List<String> result  = mapIt(strings, String::toLowerCase); //convert each string to a lower case
 
       assertEquals(expected, result);
    }
@@ -123,9 +123,9 @@ public class TestCases
    public void testExercise6()
    {
       final List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
-      final List<Integer> expected = Arrays.asList();
+      final List<Integer> expected = Arrays.asList(2,4);
 
-      final List<Integer> result = filterIt(numbers, x -> (x & 1) == 0);
+      final List<Integer> result = filterIt(numbers, x -> (x & 1) == 0); //check if x is even
 
       assertEquals(expected, result);
    }
@@ -134,11 +134,10 @@ public class TestCases
    public void testExercise7()
    {
       final List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
-      final List<Integer> expected = Arrays.asList();
+      final List<Integer> expected = Arrays.asList(4,16);
 
       final List<Integer> result = mapIt(
-         filterIt(numbers, x -> (x & 1) == 0),
-         x -> x * x);
+         filterIt(numbers, x -> (x & 1) == 0), x -> x * x); //first check if the x is even, then square x
 
       assertEquals(expected, result);
    }
