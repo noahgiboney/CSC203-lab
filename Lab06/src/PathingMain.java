@@ -154,7 +154,7 @@ public class PathingMain extends PApplet {
             redraw();
          }
       }
-      else if (key == 'p')       {
+      if (key == 'p')       {
          System.out.println("p pressed");
          drawPath ^= true;
          redraw();
@@ -171,19 +171,16 @@ public class PathingMain extends PApplet {
       try {
          Thread.sleep(2);
       } catch (Exception e) {}
-      redraw();
-      System.out.println("Exploring: " + current.x + ", " + current.y);
 
-      //check if we reached the goal yet
+      //check if we reached the goal yet, if so return true, otherwise keep going
       if(grid[current.y][current.x] == GridValues.GOAL){
-         System.out.println("Goal reached at: " + current.x + ", " + current.y);
          return true;
       }
 
-      grid[current.y][current.x] = GridValues.SEARCHED; //mark as searched
+      grid[current.y][current.x] = GridValues.SEARCHED; //mark current point as searched
 
+      //build a list of in bound neighbors in the order right, down, left up
       ArrayList<Point> neighbors = new ArrayList<>();
-
       if(withinBounds(new Point(current.x + 1, current.y), grid)){
          Point right = new Point(current.x + 1, current.y);
          neighbors.add(right);
@@ -201,18 +198,17 @@ public class PathingMain extends PApplet {
          neighbors.add(up);
       }
 
-
-      for(Point neighbor : neighbors){ //if we haven't already searched this point, is not an obstacle, and is within the bounds
-         System.out.println("Checking neighbor: " + neighbor.x + ", " + neighbor.y);
+      //search the neighbor as long as it has not been searched and is not an obstacle
+      for(Point neighbor : neighbors){
          if(grid[neighbor.y][neighbor.x] != GridValues.SEARCHED && grid[neighbor.y][neighbor.x] != GridValues.OBSTACLE){
+            //if the goal is found, then backtrack and add path to the list, add to index zero is list is in order
             if(depthFirstSearch(neighbor, grid, path)){
                path.add(0, current);
-               System.out.println("Backtracking to: " + current.x + ", " + current.y);
                return true;
             }
          }
       }
-      System.out.println("No path found from: " + current.x + ", " + current.y);
+      //return false if no path is found
       return false;
    }
 
