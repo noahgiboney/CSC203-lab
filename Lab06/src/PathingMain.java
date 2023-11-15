@@ -37,13 +37,13 @@ public class PathingMain extends PApplet {
       path = new LinkedList<>();
       wPos = new Point(2, 2);
       imgs = new ArrayList<>();
-      imgs.add(loadImage("images/wyvern1.bmp"));
-      imgs.add(loadImage("images/wyvern2.bmp"));
-      imgs.add(loadImage("images/wyvern3.bmp"));
+      imgs.add(loadImage("Lab06/images/wyvern1.bmp"));
+      imgs.add(loadImage("Lab06/images/wyvern2.bmp"));
+      imgs.add(loadImage("Lab06/images/wyvern3.bmp"));
 
-      background = loadImage("images/grass.bmp");
-      obstacle = loadImage("images/vein.bmp");
-      goal = loadImage("images/water.bmp");
+      background = loadImage("Lab06/images/grass.bmp");
+      obstacle = loadImage("Lab06/images/vein.bmp");
+      goal = loadImage("Lab06/images/water.bmp");
 
       grid = new GridValues[ROWS][COLS];
       initialize_grid(grid);
@@ -140,7 +140,7 @@ public class PathingMain extends PApplet {
    }
 
    public static void main(String args[])    {
-      PApplet.main("Lab7.PathingMain");
+      PApplet.main("PathingMain");
    }
 
    public void keyPressed()    {
