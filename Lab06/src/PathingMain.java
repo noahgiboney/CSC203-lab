@@ -145,12 +145,17 @@ public class PathingMain extends PApplet {
 
    public void keyPressed()    {
       if (key == ' ')       {
+         System.out.println("space pressed");
 			//clear out prior path
          path.clear();
-			//example - replace with dfs	
-         moveOnce(wPos, grid, path);
+			//example - replace with dfs
+         if(depthFirstSearch(wPos, grid, path)){
+            drawPath = true;
+         }
+         redraw();
       }
       else if (key == 'p')       {
+         System.out.println("p pressed");
          drawPath ^= true;
          redraw();
       }
@@ -161,9 +166,62 @@ public class PathingMain extends PApplet {
 		in one direction for one tile - it mostly is for illustrating
 		how you might test the occupancy grid and add nodes to path!
 	*/
-   private boolean moveOnce(Point pos, GridValues[][] grid, List<Point> path)    {
+
+   private boolean depthFirstSearch(Point current, GridValues[][] grid, List<Point> path){
       try {
          Thread.sleep(200);
+      } catch (Exception e) {}
+      redraw();
+      System.out.println("Exploring: " + current.x + ", " + current.y);
+
+      //check if we reached the goal yet
+      if(grid[current.y][current.x] == GridValues.GOAL){
+         System.out.println("Goal reached at: " + current.x + ", " + current.y);
+         System.out.println("goal");
+         path.add(0, current);
+         return true;
+      }
+
+      grid[current.y][current.x] = GridValues.SEARCHED; //mark as searched
+
+      ArrayList<Point> neighbors = new ArrayList<>();
+
+      if(withinBounds(new Point(current.x, current.y - 1), grid)){
+         Point down = new Point(current.x, current.y - 1);
+         neighbors.add(down);
+      }
+      if(withinBounds( new Point(current.x, current.y +1), grid)){
+         Point up =  new Point(current.x, current.y +1);
+         neighbors.add(up);
+      }
+      if(withinBounds(new Point(current.x - 1, current.y), grid)){
+         Point left = new Point(current.x - 1, current.y);
+         neighbors.add(left);
+      }
+      if(withinBounds(new Point(current.x + 1, current.y), grid)){
+         Point right = new Point(current.x + 1, current.y);
+         neighbors.add(right);
+      }
+
+
+      for(Point neighbor : neighbors){ //if we haven't already searched this point, is not an obstacle, and is within the bounds
+         System.out.println("Checking neighbor: " + neighbor.x + ", " + neighbor.y);
+         if(grid[neighbor.y][neighbor.x] != GridValues.SEARCHED && grid[neighbor.y][neighbor.x] != GridValues.OBSTACLE && withinBounds(neighbor, grid)){
+            if(depthFirstSearch(neighbor, grid, path)){
+               System.out.println("Backtracking to: " + current.x + ", " + current.y);
+               path.add(0, current);
+               return true;
+            }
+
+         }
+      }
+      System.out.println("No path found from: " + current.x + ", " + current.y);
+      return false;
+   }
+
+   private boolean moveOnce(Point pos, GridValues[][] grid, List<Point> path)    {
+      try {
+         Thread.sleep(2);
       } catch (Exception e) {}
       redraw();
 
@@ -171,7 +229,7 @@ public class PathingMain extends PApplet {
      
 		//test if this is a valid grid cell 
 		if (withinBounds(rightN, grid)  &&
-         grid[rightN.y][rightN.x] != GridValues.OBSTACLE && 
+         grid[rightN.y][rightN.x] != GridValues.OBSTACLE &&
          grid[rightN.y][rightN.x] != GridValues.SEARCHED)    {
 			//check if my right neighbor is the goal
       	if (grid[rightN.y][rightN.x] == GridValues.GOAL) {
