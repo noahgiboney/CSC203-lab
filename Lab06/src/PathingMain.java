@@ -76,7 +76,7 @@ public class PathingMain extends PApplet {
          grid[11][col] = GridValues.OBSTACLE;
       }
 
-      grid[13][14] = GridValues.GOAL;
+      grid[14][14] = GridValues.GOAL;
    }
 
    private void next_image()    {
@@ -149,10 +149,10 @@ public class PathingMain extends PApplet {
 			//clear out prior path
          path.clear();
 			//example - replace with dfs
-         if(depthFirstSearch(wPos, grid, path)){
+         if (depthFirstSearch(wPos, grid, path)){
             drawPath = true;
+            redraw();
          }
-         redraw();
       }
       else if (key == 'p')       {
          System.out.println("p pressed");
@@ -169,7 +169,7 @@ public class PathingMain extends PApplet {
 
    private boolean depthFirstSearch(Point current, GridValues[][] grid, List<Point> path){
       try {
-         Thread.sleep(200);
+         Thread.sleep(2);
       } catch (Exception e) {}
       redraw();
       System.out.println("Exploring: " + current.x + ", " + current.y);
@@ -177,8 +177,6 @@ public class PathingMain extends PApplet {
       //check if we reached the goal yet
       if(grid[current.y][current.x] == GridValues.GOAL){
          System.out.println("Goal reached at: " + current.x + ", " + current.y);
-         System.out.println("goal");
-         path.add(0, current);
          return true;
       }
 
@@ -186,33 +184,32 @@ public class PathingMain extends PApplet {
 
       ArrayList<Point> neighbors = new ArrayList<>();
 
-      if(withinBounds(new Point(current.x, current.y - 1), grid)){
-         Point down = new Point(current.x, current.y - 1);
-         neighbors.add(down);
-      }
-      if(withinBounds( new Point(current.x, current.y +1), grid)){
-         Point up =  new Point(current.x, current.y +1);
-         neighbors.add(up);
-      }
-      if(withinBounds(new Point(current.x - 1, current.y), grid)){
-         Point left = new Point(current.x - 1, current.y);
-         neighbors.add(left);
-      }
       if(withinBounds(new Point(current.x + 1, current.y), grid)){
          Point right = new Point(current.x + 1, current.y);
          neighbors.add(right);
+      }
+      if(withinBounds(new Point(current.x, current.y + 1), grid)){
+         Point down = new Point(current.x, current.y + 1);
+         neighbors.add(down);
+      }
+      if(withinBounds(new Point(current.x - 1, current.y), grid)){
+         Point left = new  Point(current.x - 1, current.y);
+         neighbors.add(left);
+      }
+      if(withinBounds( new Point(current.x, current.y -1), grid)){
+         Point up =  new Point(current.x, current.y -1);
+         neighbors.add(up);
       }
 
 
       for(Point neighbor : neighbors){ //if we haven't already searched this point, is not an obstacle, and is within the bounds
          System.out.println("Checking neighbor: " + neighbor.x + ", " + neighbor.y);
-         if(grid[neighbor.y][neighbor.x] != GridValues.SEARCHED && grid[neighbor.y][neighbor.x] != GridValues.OBSTACLE && withinBounds(neighbor, grid)){
+         if(grid[neighbor.y][neighbor.x] != GridValues.SEARCHED && grid[neighbor.y][neighbor.x] != GridValues.OBSTACLE){
             if(depthFirstSearch(neighbor, grid, path)){
-               System.out.println("Backtracking to: " + current.x + ", " + current.y);
                path.add(0, current);
+               System.out.println("Backtracking to: " + current.x + ", " + current.y);
                return true;
             }
-
          }
       }
       System.out.println("No path found from: " + current.x + ", " + current.y);
