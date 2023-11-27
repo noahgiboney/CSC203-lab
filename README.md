@@ -23,5 +23,6 @@ Sorting, Comparator, Lambda Expressions, Key Extractor
 Depth First Search
 
 ## Lab07
+Stream
 
 ## Lab08
