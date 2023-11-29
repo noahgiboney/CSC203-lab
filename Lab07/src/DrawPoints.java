@@ -3,7 +3,7 @@ Helper For Lab 8
 */
 import processing.core.*;
 
-public class drawPoints extends PApplet {
+public class DrawPoints extends PApplet {
 
 	public void settings() {
     size(500, 500);
