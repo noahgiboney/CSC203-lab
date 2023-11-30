@@ -11,7 +11,7 @@ public class FileHandler {
 
         //grab the command line argument (input file)
         String commandLine = args[0];
-        String outputFile = "Lab07/drawMe.txt";
+        String outputFile = "drawMe.txt";
 
         List<Point> myList = FileHandler.readFile(commandLine); //read the file and store the points in the list
         FileHandler.writeFile(outputFile, FileHandler.processData(myList)); //write the filtered list to the output file

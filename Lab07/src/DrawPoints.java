@@ -18,7 +18,7 @@ public class DrawPoints extends PApplet {
 
    	double x, y;
    
-   	String[] lines = loadStrings("Lab07/drawMe.txt");
+   	String[] lines = loadStrings("drawMe.txt");
    	println("there are " + lines.length);
   		for (int i=0; i < lines.length; i++){
       	if (lines[i].length() > 0 ) {
@@ -32,6 +32,6 @@ public class DrawPoints extends PApplet {
   	}
 
   	public static void main(String args[]) {
-      PApplet.main("drawPoints");
+      PApplet.main("DrawPoints");
    }
 }
