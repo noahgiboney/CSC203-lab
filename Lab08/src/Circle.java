@@ -1,14 +1,15 @@
+import javax.naming.NamingException;
 import java.util.Random;
 
-public class Circle {
+public class Circle{
     public static final double PI = 3.14159;
     private double radius;
 
-    public Circle()    {
+    public Circle()  throws ZeroRadiusException, NamingException {
         Random rand = new Random();
         radius = rand.nextDouble()*10;
     }
-    public Circle(double radius)  {
+    public Circle(double radius){
         if (radius == 0)
            throw new ZeroRadiusException();
 

@@ -1,0 +1,3 @@
+6) The circle class will not compile because the method is not throwing this error in the method signature.
+
+7)
