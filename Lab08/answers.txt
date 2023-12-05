@@ -1,4 +1,4 @@
-6) The circle class will not compile by extending Exception we are saying this is a checked exception. try catch block.
+6) The circle class will not compile by extending Exception we are saying this is a checked exception.
 
 7) Extending Runtime fixed this error because RunTimeError allows for unchecked exceptions. We could have also fixed the error by throwing at the method signature or creating
 a try and catch block.
