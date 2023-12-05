@@ -1,3 +1,14 @@
-6) The circle class will not compile because the method is not throwing this error in the method signature.
+6) The circle class will not compile by extending Exception we are saying this is a checked exception. try catch block.
 
-7)
+7) Extending Runtime fixed this error because RunTimeError allows for unchecked exceptions. We could have also fixed the error by throwing at the method signature or creating
+a try and catch block.
+
+9) The circle will only be printed because we have a try catch block with our user defined exceptions. If we have a negative or zero radius it will catch that exception from
+our parent user defined exception and print the message that is relevant. So therefor the circle only gets printed if the radius is greater than zero, when there is no exception
+thrown. In finally will always get printed no matter what, and done will get printed after as long as we don't return out of the function at any point.
+
+13) After doing this, we get a runtime exception "negative radius", which makes sense because this is what have a negative radius throwing in the circle class. However,
+the difference here is we have no catch for this, so instead of differing out program to do something if this exception is throwing, it just crashes
+
+14) If we add an invalid circle before the catch block it essentially the same as having no catch block. It crashes with exception zero radius because there is nothing to catch
+and do.

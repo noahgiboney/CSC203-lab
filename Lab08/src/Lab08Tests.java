@@ -96,17 +96,50 @@ public class Lab08Tests
                    "CircleException", c.getSuperclass().getName());   
    }
   
-   // ---------------------------- Fuctionality Tests --------------------------------
+   // ---------------------------- Functionality Tests --------------------------------
       
    @Test
-   public void throwsNothing() {
+   public void throwsNothing1() {
       Circle c = new Circle(3);
    }
-   
-   @Test(expected = ZeroRadiusException.class)
-   public void throwsZeroRadiusException() 
+
+   @Test
+   public void throwsNothing2() {
+      Circle c = new Circle(6);
+   }
+
+   @Test
+   public void throwsNothing3() {
+      Circle c = new Circle(100);
+   }
+
+   @Test(expected = CircleException.class)
+   public void throwsCircleException1()
    {
       Circle c = new Circle(0);
+   }
+
+   @Test(expected = CircleException.class)
+   public void throwsCircleException2() {
+      Circle c = new Circle(-6);
+   }
+
+   @Test(expected = ZeroRadiusException.class)
+   public void throwsZeroRadiusException1()
+   {
+      Circle c = new Circle(0);
+   }
+
+   @Test(expected = NegativeRadiusException.class)
+   public void throwsNegativeRadiusException1()
+   {
+      Circle c = new Circle(-2);
+   }
+
+   @Test(expected = NegativeRadiusException.class)
+   public void throwsNegativeRadiusException2()
+   {
+      Circle c = new Circle(-88);
    }
 }
    
