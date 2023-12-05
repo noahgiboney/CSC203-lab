@@ -23,6 +23,7 @@ Sorting, Comparator, Lambda Expressions, Key Extractor
 Depth First Search
 
 ## Lab07
-Stream
+Stream; Filtering and Mapping collections
 
 ## Lab08
+Throwing Exceptions and User Defined Exceptions
