@@ -12,3 +12,5 @@ the difference here is we have no catch for this, so instead of differing out pr
 
 14) If we add an invalid circle before the catch block it essentially the same as having no catch block. It crashes with exception zero radius because there is nothing to catch
 and do.
+
+15) Incomplete
