@@ -1,6 +1,8 @@
 ﻿# CSC203-lab
 Lab work CSC203 at Cal Poly SLO
 
+Lab topics/content noted belew
+
 ## Lab00
 Translating Python to Java
 
