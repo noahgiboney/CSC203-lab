@@ -3,29 +3,29 @@ Lab work CSC203 at Cal Poly SLO
 
 Alls labs completed in java. Lab topics/content noted belew
 
-## Lab00
+### Lab00
 Translating Python to Java
 
-## Lab01
+### Lab01
 Java Collections and loops
 
-## Lab02
+### Lab02
 Static vs Instance methods
 
-## Lab03
+### Lab03
 Interfaces and Classes
 
-## Lab04
+### Lab04
 Inheritance
 
-## Lab05
+### Lab05
 Sorting, Comparator, Lambda Expressions, Key Extractor
 
-## Lab06
+### Lab06
 Depth First Search
 
-## Lab07
+### Lab07
 Stream; Filtering and Mapping collections
 
-## Lab08
+### Lab08
 Throwing Exceptions and User Defined Exceptions
