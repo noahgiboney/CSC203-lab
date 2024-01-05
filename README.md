@@ -1,7 +1,9 @@
 ﻿# CSC203-lab
 Lab work CSC203 at Cal Poly SLO
 
-Alls labs completed in java. Lab topics/content noted belew
+Alls labs completed in java. 
+
+## Topics
 
 ### Lab00
 Translating Python to Java
